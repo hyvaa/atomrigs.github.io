@@ -80,7 +80,8 @@ function getLink(addr) {
 // new function=============================================  
 function changeContAddr() {
   // newAccAddr validation required..
-  contractAddress = newContAddr;
+  contractAddress = document.getElementById('newContAddr').value;
+    
   location.reload();
 }
   
