@@ -16,8 +16,8 @@
 <ul>
   <li>컨트랙트 주소: <span id="contractAddr"></span></li>
   <li>
-    <input id="newAccAddr" type="text">
-    <button onClick="changeAccAddr()">컨트랙트 주소 변경하기</button> </li>
+    <input id="newContAddr" type="text">
+    <button onClick="changeContAddr()">컨트랙트 주소 변경하기</button> </li>
     
   <li>내 어카운트 주소: <span id="accountAddr"></span></li>
   <li>컨트랙트에 저장된 값: <span id="storedData"></span>
@@ -78,9 +78,9 @@ function getLink(addr) {
   
   
 // new function=============================================  
-function changeAccAddr() {
+function changeContAddr() {
   // newAccAddr validation required..
-  contractAddress = newAccAddr;
+  contractAddress = newContAddr;
   startApp();
 }
   
