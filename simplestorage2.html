@@ -15,6 +15,10 @@
 <h3>Simple Storage dApp 예제</h3>
 <ul>
   <li>컨트랙트 주소: <span id="contractAddr"></span></li>
+  <li>
+    <input id="newAccAddr" type="text">
+    <button onClick="changeAccAddr()">컨트랙트 주소 변경하기</button> </li>
+    
   <li>내 어카운트 주소: <span id="accountAddr"></span></li>
   <li>컨트랙트에 저장된 값: <span id="storedData"></span>
     <button onclick="getValue()">새로고침</button> (현재블록: <span id="lastBlock"></span>)</li>
@@ -71,6 +75,17 @@ function startApp() {
 function getLink(addr) {
   return '<a target="_blank" href=https://testnet.etherscan.io/address/' + addr + '>' + addr +'</a>';
 }
+  
+  
+// new function=============================================  
+function changeAccAddr() {
+  // newAccAddr validation required..
+  contractAddress = newAccAddr;
+  history.go(0);   // refresh page 
+}
+  
+  
+ //=========================================================
 
 function getValue() {
   simpleStorage.get(function(e,r){
