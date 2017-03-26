@@ -106,7 +106,7 @@ var getJSON = function(url, callback) {
 function contHistory() {
   //todo : make modal...and show max10 txs
   document.getElementById('historyProgress').innerHTML="<i>seaching txs  </i>";
-  getJSON('http://testnet.etherscan.io/api?module=account&action=txlist&address='
+  getJSON('https://testnet.etherscan.io/api?module=account&action=txlist&address='
 	+ contractAddress +
 	'&startblock=0&endblock=99999999&sort=asc&apikey=YourApiKeyToken',
 	function(err, data) {
