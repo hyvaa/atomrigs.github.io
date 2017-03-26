@@ -25,7 +25,8 @@
   <li><input id="newValue" type="text"><button onclick="setValue()">새 값으로 저장하기</button>
       <div id="result"></div></li>
   <li>새 값을 저장한 후 팬딩 트랜잭션이 블록에 포함되면 자동으로 페이지가 업데이트될 것입니다.</li>
-  <li> <button onclick="contHistory()"> 컨트랙트 히스토리 보기 </button></li>
+  <li> <span style="color:red" id="historyProgress"></span><button onclick="contHistory()"> 컨트랙트 히스토리 보기 </button></li>
+  <li> <select id="historyList"> </li>
 </ul>
 
 컨트랙트 소스
@@ -35,7 +36,7 @@ HTML 소스<br>
 <a href="https://hyvaa.github.io/atomrigs.github.io/simplestorage3.html">https://hyvaa.github.io/atomrigs.github.io/simplestorage3.html</a>
 <br><br>
 <p>
-<a href="http://www.chaintalk.io/archive/lecture?sca=%EB%82%98%EB%8F%84+dApp+%EA%B0%9C%EB%B0%9C"><i>나도 dApp 개발해 보자 시리즈 by Atomrigs © 2017</i></a>
+<a href="http://www.chaintalk.io/archive/lecture?sca=%EB%82%98%EB%8F%84+dApp+%EA%B0%9C%EB%B0%9C"><i>나도 dApp 개발해 보자 시리즈 by Atomrigs ⓒ 2017</i></a>
 </p>
 
 </body>
@@ -86,9 +87,38 @@ function changeContAddr() {
 }
 
 
+var getJSON = function(url, callback) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status == 200) {
+        callback(null, xhr.response);
+      } else {
+        callback(status);
+      }
+    };
+    xhr.send();
+};
+
 
 function contHistory() {
   //todo : make modal...and show max10 txs
+  document.getElementById('historyProgress').innerHTML="<i>seaching txs  </i>";
+  getJSON('http://testnet.etherscan.io/api?module=account&action=txlist&address='
+	+ contractAddress +
+	'&startblock=0&endblock=99999999&sort=asc&apikey=YourApiKeyToken',
+	function(err, data) {
+	
+	
+	
+	console.log(data);
+	document.getElementById('historyProgress').innerHTML="";
+	}
+  );
+  
+  
   
 
 }
